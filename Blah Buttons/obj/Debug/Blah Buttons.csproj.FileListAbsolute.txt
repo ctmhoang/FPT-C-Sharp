@@ -1,0 +1,9 @@
+C:\Users\Camer\source\repos\Blah Buttons\bin\Debug\Blah Buttons.exe
+C:\Users\Camer\source\repos\Blah Buttons\bin\Debug\Blah Buttons.pdb
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah Buttons.csprojAssemblyReference.cache
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah_Buttons.Form1.resources
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah_Buttons.Properties.Resources.resources
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah Buttons.csproj.GenerateResource.cache
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah Buttons.csproj.CoreCompileInputs.cache
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah Buttons.exe
+C:\Users\Camer\source\repos\Blah Buttons\obj\Debug\Blah Buttons.pdb
