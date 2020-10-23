@@ -1,0 +1,13 @@
+C:\Users\Camer\source\repos\Winform\bin\Debug\Winform.exe.config
+C:\Users\Camer\source\repos\Winform\bin\Debug\Winform.exe
+C:\Users\Camer\source\repos\Winform\bin\Debug\Winform.pdb
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.csprojAssemblyReference.cache
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.mainForm.resources
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.Properties.Resources.resources
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.csproj.GenerateResource.cache
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.csproj.CoreCompileInputs.cache
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.exe
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.pdb
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.Display.Edit.resources
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.Order.resources
+C:\Users\Camer\source\repos\Winform\obj\Debug\Winform.Display.OrderDetail.resources
