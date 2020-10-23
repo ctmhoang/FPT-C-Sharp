@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Winform.Business;
+using Winform.Dao;
 using Winform.Display;
 
 namespace Winform
@@ -22,7 +23,7 @@ namespace Winform
 
         private void Order_Load(object sender, EventArgs e)
         {
-            _curOrderDetails = new Dictionary<Product, uint>(20);
+            _curOrderDetails = new Dictionary<Product, uint>(5);
 
             cb_customer.DataSource = Customer.FetchAll();
             cb_customer.DisplayMember = "Name";
@@ -46,17 +47,38 @@ namespace Winform
         private void btn_add_Click(object sender, EventArgs e)
         {
             var selectedItem = (Product) lbx_Products.SelectedItem;
+            var backup = _curOrderDetails.ToDictionary(entry => entry.Key, entry => entry.Value);
             if (!_curOrderDetails.ContainsKey(selectedItem))
                 _curOrderDetails.Add(selectedItem, 1);
             var orderDetailsForm = new OrderDetail(ref _curOrderDetails);
             orderDetailsForm.Closed += (o, args) =>
             {
-                _curOrderDetails = _curOrderDetails.Where(entry => entry.Value != 0).ToDictionary(entry => entry.Key, entry => entry.Value);
-                this.Enabled = true;
-                lb_result.Text = _curOrderDetails.Count > 0 ? $@"Current Order has {_curOrderDetails.Keys.Count} unique items and total quantity is {_curOrderDetails.Values.Aggregate((a,b) => a + b)}" : @"No item was added";
+                if (!orderDetailsForm.Save)
+                {
+                    _curOrderDetails = backup;
+                    lb_result.Text = @"Do not save any changes";
+                }
+                else
+                {
+                    _curOrderDetails = _curOrderDetails.Where(entry => entry.Value != 0)
+                        .ToDictionary(entry => entry.Key, entry => entry.Value);
+                    lb_result.Text = _curOrderDetails.Count > 0
+                        ? $@"Current Order has {_curOrderDetails.Keys.Count} unique items and total quantity is {_curOrderDetails.Values.Aggregate((a, b) => a + b)}"
+                        : @"No item was added";
+                }
+                Enabled = true;
             };
-            this.Enabled = false;
+            Enabled = false;
             orderDetailsForm.Show();
+        }
+
+        private void btn_create_Click(object sender, EventArgs e)
+        {
+            OrderDataAccess.insertOrder(_curOrderDetails, cb_customer.SelectedValue.ToString(),
+                Convert.ToInt32(cb_emp.SelectedValue),
+                Convert.ToInt32(cb_delComp.SelectedValue), dtp_reqDate.Value);
+            _curOrderDetails = new Dictionary<Product, uint>(5);
+            lb_result.Text = @"Added Successfully";
         }
     }
 }

@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cb_delComp = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_reqDate = new System.Windows.Forms.DateTimePicker();
             this.lbx_Products = new System.Windows.Forms.ListBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_create = new System.Windows.Forms.Button();
@@ -109,13 +109,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Delivery Company:";
             // 
-            // dateTimePicker1
+            // dtp_reqDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(172, 124);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(255, 28);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtp_reqDate.Location = new System.Drawing.Point(172, 124);
+            this.dtp_reqDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtp_reqDate.Name = "dtp_reqDate";
+            this.dtp_reqDate.Size = new System.Drawing.Size(255, 28);
+            this.dtp_reqDate.TabIndex = 3;
             // 
             // lbx_Products
             // 
@@ -147,6 +147,7 @@
             this.btn_create.TabIndex = 7;
             this.btn_create.Text = "Create Order";
             this.btn_create.UseVisualStyleBackColor = true;
+            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // lb_result
             // 
@@ -169,7 +170,7 @@
             this.Controls.Add(this.btn_create);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.lbx_Products);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtp_reqDate);
             this.Controls.Add(this.cb_delComp);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -196,7 +197,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cb_delComp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_reqDate;
         private System.Windows.Forms.ListBox lbx_Products;
         private System.Windows.Forms.Button btn_create;
         private System.Windows.Forms.Label lb_result;

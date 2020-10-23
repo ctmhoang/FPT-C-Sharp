@@ -33,9 +33,11 @@ namespace Winform.Display
         private List<Entry> DisplaySource { get; }
         public decimal TotCost { get; set; }
 
+        public bool Save { get; private set; }
         public OrderDetail(ref Dictionary<Product, uint> currentOrder)
         {
             CurOrder = currentOrder;
+            Save = false;
             DisplaySource = currentOrder.Select(entry =>
                 new Entry(entry.Key, entry.Key.Name, entry.Key.Price * entry.Value, entry.Value)).ToList();
             InitializeComponent();
@@ -114,6 +116,12 @@ namespace Winform.Display
             dgw_orderDetails.CancelEdit();
             MessageBox.Show(@"Must be 0 or positive numeric value", @"Invalid input data", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Save = true;
+            Close();
         }
     }
 }
