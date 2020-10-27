@@ -74,11 +74,19 @@ namespace Winform
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            OrderDataAccess.insertOrder(_curOrderDetails, cb_customer.SelectedValue.ToString(),
-                Convert.ToInt32(cb_emp.SelectedValue),
-                Convert.ToInt32(cb_delComp.SelectedValue), dtp_reqDate.Value);
-            _curOrderDetails = new Dictionary<Product, uint>(5);
-            lb_result.Text = @"Added Successfully";
+            if (_curOrderDetails.Count != 0)
+            {
+                OrderDataAccess.insertOrder(_curOrderDetails, cb_customer.SelectedValue.ToString(),
+                    Convert.ToInt32(cb_emp.SelectedValue),
+                    Convert.ToInt32(cb_delComp.SelectedValue), dtp_reqDate.Value);
+                _curOrderDetails = new Dictionary<Product, uint>(5);
+                lb_result.Text = @"Added Successfully";
+            }
+            else
+            {
+                lb_result.Text = @"Cart empty!";
+
+            }
         }
     }
 }

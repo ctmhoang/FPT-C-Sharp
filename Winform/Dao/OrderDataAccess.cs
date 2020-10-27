@@ -68,6 +68,7 @@ namespace Winform.Dao
 
         public static int insertOrder(Dictionary<Product, uint> cart, string cId, int eId, int dId, DateTime reqDate)
         {
+            // or use output inserted.OrderID in sql
             const string s1 =
                 @"Insert into Orders (CustomerID, EmployeeID, OrderDate, RequiredDate, ShipVia) values (@cID, @eID, GETDATE(), @reqDate, @dId);";
             var p1 = new SqlParameter("@cID", SqlDbType.NVarChar) {Value = cId};
