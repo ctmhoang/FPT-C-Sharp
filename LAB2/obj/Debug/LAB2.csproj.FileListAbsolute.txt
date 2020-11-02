@@ -9,3 +9,4 @@ C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.csproj.GenerateResource.cache
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.exe
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.pdb
+C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.InfoForm.resources

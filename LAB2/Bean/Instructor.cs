@@ -8,24 +8,34 @@ namespace LAB2.Bean
 {
     public class Instructor
     {
+        private static readonly Dictionary<int, Instructor> Data;
+
+        static Instructor()
+        {
+            Data = InstructorDao.FetchAll().Select().Select(dr => new Instructor(Convert.ToInt32(dr["InstructorId"]),
+                $@"{dr["InstructorFirstName"]} {dr["InstructorMidName"]} {dr["InstructorLastName"]}"
+            )).ToDictionary(i => i.Id, i => i);
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public int DeptId { get; set; }
 
-        public Instructor(int id, string name, int deptId)
+        public Instructor(int id, string name)
         {
             Id = id;
             Name = name ?? throw new ArgumentNullException(nameof(name));
-            DeptId = deptId;
         }
 
         public static List<Instructor> FetchAll()
         {
-            return InstructorDao.FetchAll().Select().Select(dr => new Instructor(Convert.ToInt32(dr["InstructorId"]),
-                $@"{dr["InstructorFirstName"]} {dr["InstructorMidName"]} {dr["InstructorLastName"]}",
-                Convert.ToInt32(dr["InstructorId"]))).ToList();
+            return Data.Values.ToList();
+        }
+
+        public static Instructor Get(int id)
+        {
+            return Data.TryGetValue(id, out var res) ? res : null;
         }
     }
 }

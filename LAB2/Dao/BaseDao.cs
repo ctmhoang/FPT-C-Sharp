@@ -30,13 +30,13 @@ namespace LAB2.Dao
             }
         }
 
-        protected static int ExecuteUpdate(SqlCommand command)
+        protected static object ExecuteUpdate(SqlCommand command, bool isScalar = false)
         {
             using (var conn = GetConnection())
             {
                 command.Connection = conn;
                 conn.Open();
-                return command.ExecuteNonQuery();
+                return isScalar ? command.ExecuteScalar() : command.ExecuteNonQuery();
             }
         }
     }
