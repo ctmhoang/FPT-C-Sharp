@@ -91,6 +91,7 @@ namespace LAB2
                 _data = Course.FetchAll();
                 Enabled = true;
                 lb_tot.Text = $@"Total: {_data.Count()} Courses";
+                dgw_courses.DataSource = _data;
             };
             addForm.Show();
         }
