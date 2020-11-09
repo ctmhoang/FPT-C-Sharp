@@ -1,0 +1,11 @@
+C:\Users\Camer\source\repos\WebForm\bin\WebForm.dll.config
+C:\Users\Camer\source\repos\WebForm\bin\WebForm.dll
+C:\Users\Camer\source\repos\WebForm\bin\WebForm.pdb
+C:\Users\Camer\source\repos\WebForm\bin\Winform.exe
+C:\Users\Camer\source\repos\WebForm\bin\Winform.pdb
+C:\Users\Camer\source\repos\WebForm\bin\Winform.exe.config
+C:\Users\Camer\source\repos\WebForm\obj\Debug\WebForm.csprojAssemblyReference.cache
+C:\Users\Camer\source\repos\WebForm\obj\Debug\WebForm.csproj.CoreCompileInputs.cache
+C:\Users\Camer\source\repos\WebForm\obj\Debug\WebForm.csproj.CopyComplete
+C:\Users\Camer\source\repos\WebForm\obj\Debug\WebForm.dll
+C:\Users\Camer\source\repos\WebForm\obj\Debug\WebForm.pdb
