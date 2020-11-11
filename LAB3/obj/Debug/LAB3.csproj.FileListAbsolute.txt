@@ -1,0 +1,11 @@
+C:\Users\Camer\source\repos\LAB3\bin\LAB3.dll.config
+C:\Users\Camer\source\repos\LAB3\bin\LAB3.dll
+C:\Users\Camer\source\repos\LAB3\bin\LAB3.pdb
+C:\Users\Camer\source\repos\LAB3\bin\LAB2.exe
+C:\Users\Camer\source\repos\LAB3\bin\LAB2.pdb
+C:\Users\Camer\source\repos\LAB3\bin\LAB2.exe.config
+C:\Users\Camer\source\repos\LAB3\obj\Debug\LAB3.csprojAssemblyReference.cache
+C:\Users\Camer\source\repos\LAB3\obj\Debug\LAB3.csproj.CoreCompileInputs.cache
+C:\Users\Camer\source\repos\LAB3\obj\Debug\LAB3.csproj.CopyComplete
+C:\Users\Camer\source\repos\LAB3\obj\Debug\LAB3.dll
+C:\Users\Camer\source\repos\LAB3\obj\Debug\LAB3.pdb
