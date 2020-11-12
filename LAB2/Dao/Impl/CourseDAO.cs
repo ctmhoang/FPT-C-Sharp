@@ -29,5 +29,12 @@ namespace LAB2.Dao.impl
             command.Parameters.AddRange(para);
             return (int) ExecuteUpdate(command);
         }
+
+        public static void Delete(params SqlParameter[] params])
+        {
+            var command = new SqlCommand("Delete from student_course where courseid = @cId");
+            command.Parameters.Add(command);
+            
+        }
     }
 }

@@ -30,7 +30,6 @@ namespace LAB2
                 MessageBox.Show($@"Do not have any students in {Ctx.Code} Course", @"Notify", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-            dgw_data.DataSource = data;
             dgw_data.MultiSelect = false;
             dgw_data.ReadOnly = true;
             dgw_data.AllowUserToResizeColumns = false;
@@ -52,6 +51,8 @@ namespace LAB2
             };
 
             dgw_data.Columns.AddRange(roll,name);
+            dgw_data.DataSource = data;
+
         }
     }
 }

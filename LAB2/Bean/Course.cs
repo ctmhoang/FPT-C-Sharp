@@ -72,5 +72,10 @@ namespace LAB2.Bean
             Sub = subject ?? throw new ArgumentNullException(nameof(subject));
             Ins = instructor ?? throw new ArgumentNullException(nameof(instructor));
         }
+
+        public static void Delete(Course course)
+        {
+            CourseDao.Delete();
+        }
     }
 }

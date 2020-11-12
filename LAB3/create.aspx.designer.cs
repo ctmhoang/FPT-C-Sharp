@@ -11,7 +11,7 @@ namespace LAB3
 {
 
 
-    public partial class create
+    public partial class Create
     {
 
         /// <summary>
@@ -49,5 +49,23 @@ namespace LAB3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_ins;
+
+        /// <summary>
+        /// gw_students control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gw_students;
+
+        /// <summary>
+        /// btn_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_submit;
     }
 }

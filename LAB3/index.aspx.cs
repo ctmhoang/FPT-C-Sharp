@@ -13,11 +13,17 @@ namespace LAB3
       
         protected void Page_Load(object sender, EventArgs e)
         {
+            Course.Update();
             dg_display.DataSource = Course.FetchAll();
             dg_display.DataBind();
 
             lb_tot.Text = $@"Total: {((List<Course>)dg_display.DataSource).Count()} Courses";
 
+        }
+
+        protected void dg_display_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            
         }
     }
 }

@@ -124,5 +124,24 @@ namespace LAB2
                 MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             
         }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            string status = null;
+            if (dgw_courses.SelectedRows.Count > 0) status = "ROW";
+            else if (dgw_courses.SelectedCells.Count > 0) status = "CELL";
+            Course course = null;
+            switch (status)
+            {
+                case "ROW":
+                    course = (Course)dgw_courses.SelectedRows[0].DataBoundItem);
+                    break;
+                case "CELL":
+                    course = _data[dgw_courses.SelectedCells[0].RowIndex];
+                    break;
+            }
+
+            Course.Delete(course);
+        }
     }
 }
