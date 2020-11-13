@@ -8,7 +8,7 @@ using LAB2.Dao.impl;
 
 namespace LAB2.Bean
 {
-    public class Student
+    public class Student : IEquatable<Student>
     {
         private static readonly Dictionary<int, Student> Data;
 
@@ -46,10 +46,43 @@ namespace LAB2.Bean
             Id = id;
         }
 
-        public int Delete(int studentId)
+        public bool Equals(Student other)
         {
-            var param = new SqlParameter("sId",SqlDbType.Int){Value = studentId};
-            return StudentDao.Delete(param);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Name == other.Name && Id == other.Id && RollId == other.RollId;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Student) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Id;
+                hashCode = (hashCode * 397) ^ (RollId != null ? RollId.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public static int Leave(int studentId, int courseId)
+        {
+            var param = new SqlParameter("sId", SqlDbType.Int) { Value = studentId };
+            var param2 = new SqlParameter("cId",SqlDbType.Int){Value = courseId};
+            return StudentDao.Leave(param,param2);
+        }
+
+        public static int LeaveRange(List<int> studIds, int courseId)
+        {
+            return studIds.Select(id => Leave(id ,courseId)).Sum();
+        }
+
     }
 }

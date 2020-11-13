@@ -92,7 +92,7 @@ namespace LAB2
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            var addForm = new AddForm();
+            var addForm = new AddCourseForm();
             Enabled = false;
             addForm.Closed += (o, args) =>
             {

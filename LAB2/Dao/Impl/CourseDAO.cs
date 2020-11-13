@@ -41,5 +41,6 @@ namespace LAB2.Dao.impl
             command2.Parameters.Add(courseIdClone);
             ExecuteUpdate(command2);
         }
+
     }
 }

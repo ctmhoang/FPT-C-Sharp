@@ -30,9 +30,10 @@ namespace LAB2
         private void InitializeComponent()
         {
             this.sc_main = new System.Windows.Forms.SplitContainer();
-            this.btn_del = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.btn_del = new System.Windows.Forms.Button();
             this.dgw_display = new System.Windows.Forms.DataGridView();
+            this.lb_tot = new System.Windows.Forms.Label();
             this.sc_main.Panel1.SuspendLayout();
             this.sc_main.Panel2.SuspendLayout();
             this.sc_main.SuspendLayout();
@@ -48,6 +49,7 @@ namespace LAB2
             // 
             // sc_main.Panel1
             // 
+            this.sc_main.Panel1.Controls.Add(this.lb_tot);
             this.sc_main.Panel1.Controls.Add(this.btn_add);
             this.sc_main.Panel1.Controls.Add(this.btn_del);
             // 
@@ -55,28 +57,28 @@ namespace LAB2
             // 
             this.sc_main.Panel2.Controls.Add(this.dgw_display);
             this.sc_main.Size = new System.Drawing.Size(800, 450);
-            this.sc_main.SplitterDistance = 117;
+            this.sc_main.SplitterDistance = 141;
             this.sc_main.TabIndex = 0;
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(1, 218);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(137, 200);
+            this.btn_add.TabIndex = 1;
+            this.btn_add.Text = "Add";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // btn_del
             // 
             this.btn_del.Location = new System.Drawing.Point(0, 0);
             this.btn_del.Name = "btn_del";
-            this.btn_del.Size = new System.Drawing.Size(115, 217);
+            this.btn_del.Size = new System.Drawing.Size(138, 212);
             this.btn_del.TabIndex = 0;
             this.btn_del.Text = "Delete";
             this.btn_del.UseVisualStyleBackColor = true;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(0, 223);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(114, 227);
-            this.btn_add.TabIndex = 1;
-            this.btn_add.Text = "Add";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // dgw_display
             // 
@@ -86,8 +88,18 @@ namespace LAB2
             this.dgw_display.Name = "dgw_display";
             this.dgw_display.RowHeadersWidth = 51;
             this.dgw_display.RowTemplate.Height = 24;
-            this.dgw_display.Size = new System.Drawing.Size(679, 450);
+            this.dgw_display.Size = new System.Drawing.Size(655, 450);
             this.dgw_display.TabIndex = 0;
+            // 
+            // lb_tot
+            // 
+            this.lb_tot.AutoSize = true;
+            this.lb_tot.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lb_tot.Location = new System.Drawing.Point(3, 421);
+            this.lb_tot.Name = "lb_tot";
+            this.lb_tot.Size = new System.Drawing.Size(51, 20);
+            this.lb_tot.TabIndex = 2;
+            this.lb_tot.Text = "Total: ";
             // 
             // UpdateForm
             // 
@@ -99,6 +111,7 @@ namespace LAB2
             this.Text = "Update Course";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.sc_main.Panel1.ResumeLayout(false);
+            this.sc_main.Panel1.PerformLayout();
             this.sc_main.Panel2.ResumeLayout(false);
             this.sc_main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgw_display)).EndInit();
@@ -112,5 +125,6 @@ namespace LAB2
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.DataGridView dgw_display;
+        private System.Windows.Forms.Label lb_tot;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace LAB2
 {
-    partial class AddForm
+    partial class AddCourseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -137,7 +137,7 @@
             this.lb_stu.TabIndex = 10;
             this.lb_stu.Text = "Students:";
             // 
-            // AddForm
+            // AddCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -154,7 +154,7 @@
             this.Controls.Add(this.tb_code);
             this.Controls.Add(this.lb_code);
             this.Font = new System.Drawing.Font("Roboto Condensed", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "AddForm";
+            this.Name = "AddCourseForm";
             this.Text = "Create new course";
             this.Load += new System.EventHandler(this.AddForm_Load);
             this.ResumeLayout(false);

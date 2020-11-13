@@ -58,6 +58,8 @@ namespace LAB2.Bean
                     new SqlParameter("sId", SqlDbType.Int) {Value = s.Id})).Sum();
         }
 
+
+
         public int Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
@@ -78,5 +80,6 @@ namespace LAB2.Bean
             var param1 = new SqlParameter("cId",SqlDbType.Int){Value = course.Id};
             CourseDao.Delete(param1);
         }
+
     }
 }

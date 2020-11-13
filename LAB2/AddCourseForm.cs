@@ -11,9 +11,9 @@ using LAB2.Dao.impl;
 
 namespace LAB2
 {
-    public partial class AddForm : Form
+    public partial class AddCourseForm : Form
     {
-        public AddForm()
+        public AddCourseForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Fixed3D;

@@ -15,10 +15,12 @@ namespace LAB2.Dao.impl
             return FetchAll($"Select StudentId from Student_Course Where CourseId = {courseId}");
         }
 
-        public static int Delete(SqlParameter studentId)
+        public static int Leave(params SqlParameter[] para)
         {
-            var command = new SqlCommand(@"Delete from student_course where studentid = @sId"){Parameters = { studentId}};
+            var command = new SqlCommand(@"Delete from student_course where studentid = @sId and courseid = @cId");
+            command.Parameters.AddRange(para);
             return (int)ExecuteUpdate(command);
         }
+
     }
 }

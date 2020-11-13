@@ -2,7 +2,6 @@ C:\Users\Camer\source\repos\LAB2\bin\Debug\LAB2.exe.config
 C:\Users\Camer\source\repos\LAB2\bin\Debug\LAB2.exe
 C:\Users\Camer\source\repos\LAB2\bin\Debug\LAB2.pdb
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.csprojAssemblyReference.cache
-C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.AddForm.resources
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.Properties.Resources.resources
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.ShowForm.resources
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.csproj.GenerateResource.cache
@@ -11,3 +10,5 @@ C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.exe
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.pdb
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.InfoForm.resources
 C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.UpdateForm.resources
+C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.AddStudentForm.resources
+C:\Users\Camer\source\repos\LAB2\obj\Debug\LAB2.AddCourseForm.resources
