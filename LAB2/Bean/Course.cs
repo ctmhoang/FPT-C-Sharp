@@ -75,7 +75,8 @@ namespace LAB2.Bean
 
         public static void Delete(Course course)
         {
-            CourseDao.Delete();
+            var param1 = new SqlParameter("cId",SqlDbType.Int){Value = course.Id};
+            CourseDao.Delete(param1);
         }
     }
 }

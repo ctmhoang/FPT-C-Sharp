@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using LAB2.Bean;
@@ -30,11 +31,15 @@ namespace LAB2.Dao.impl
             return (int) ExecuteUpdate(command);
         }
 
-        public static void Delete(params SqlParameter[] params])
+        public static void Delete(SqlParameter courseId)
         {
-            var command = new SqlCommand("Delete from student_course where courseid = @cId");
-            command.Parameters.Add(command);
-            
+            var courseIdClone = ((ICloneable) courseId).Clone();
+            var command = new SqlCommand(@"Delete from student_course where courseid = @cId");
+            command.Parameters.Add(courseId);
+            ExecuteUpdate(command);
+            var command2 = new SqlCommand(@"Delete from courses where courseid = @cId");
+            command2.Parameters.Add(courseIdClone);
+            ExecuteUpdate(command2);
         }
     }
 }

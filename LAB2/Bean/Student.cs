@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using LAB2.Dao.impl;
@@ -42,6 +44,12 @@ namespace LAB2.Bean
             Name = name ?? throw new ArgumentNullException(nameof(name));
             RollId = rollId ?? throw new ArgumentNullException(nameof(rollId));
             Id = id;
+        }
+
+        public int Delete(int studentId)
+        {
+            var param = new SqlParameter("sId",SqlDbType.Int){Value = studentId};
+            return StudentDao.Delete(param);
         }
     }
 }

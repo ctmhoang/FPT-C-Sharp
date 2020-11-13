@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace LAB2.Dao.impl
 {
@@ -12,6 +13,12 @@ namespace LAB2.Dao.impl
         public static DataTable GetAllStudentIdsBy(int courseId)
         {
             return FetchAll($"Select StudentId from Student_Course Where CourseId = {courseId}");
+        }
+
+        public static int Delete(SqlParameter studentId)
+        {
+            var command = new SqlCommand(@"Delete from student_course where studentid = @sId"){Parameters = { studentId}};
+            return (int)ExecuteUpdate(command);
         }
     }
 }

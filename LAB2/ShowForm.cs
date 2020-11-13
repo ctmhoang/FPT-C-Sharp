@@ -81,39 +81,32 @@ namespace LAB2
             dgw_courses.Columns.AddRange(code, desc, sub, ins);
         }
 
+        private void Bind()
+        {
+            Course.Update();
+            _data = Course.FetchAll();
+            lb_tot.Text = $@"Total: {_data.Count()} Courses";
+            dgw_courses.DataSource = _data;
+            dgw_courses.Update();
+        }
+
         private void btn_add_Click(object sender, EventArgs e)
         {
             var addForm = new AddForm();
             Enabled = false;
             addForm.Closed += (o, args) =>
             {
-                Course.Update();
-                _data = Course.FetchAll();
                 Enabled = true;
-                lb_tot.Text = $@"Total: {_data.Count()} Courses";
-                dgw_courses.DataSource = _data;
+                Bind();
             };
             addForm.Show();
         }
 
         private void btn_show_Click(object sender, EventArgs e)
         {
-            string status = null;
-            if (dgw_courses.SelectedRows.Count > 0) status = "ROW";
-            else if (dgw_courses.SelectedCells.Count > 0) status = "CELL";
-            InfoForm infoForm = null;
-            switch (status)
+            if (GetSelectedCourse() is Course selectedCourse)
             {
-                case "ROW":
-                    infoForm = new InfoForm((Course) dgw_courses.SelectedRows[0].DataBoundItem);
-                    break;
-                case "CELL":
-                    infoForm = new InfoForm(_data[dgw_courses.SelectedCells[0].RowIndex]);
-                    break;
-            }
-
-            if (infoForm != null)
-            {
+                var infoForm = new InfoForm(selectedCourse);
                 Enabled = false;
 
                 infoForm.Closed += (o, args) =>
@@ -122,10 +115,20 @@ namespace LAB2
             }
             else
                 MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (GetSelectedCourse() is Course selectedCourse)
+            {
+                Course.Delete(selectedCourse);
+               Bind();
+            }
+            else
+                MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private Course GetSelectedCourse()
         {
             string status = null;
             if (dgw_courses.SelectedRows.Count > 0) status = "ROW";
@@ -134,14 +137,27 @@ namespace LAB2
             switch (status)
             {
                 case "ROW":
-                    course = (Course)dgw_courses.SelectedRows[0].DataBoundItem);
+                    course = (Course) dgw_courses.SelectedRows[0].DataBoundItem;
                     break;
                 case "CELL":
                     course = _data[dgw_courses.SelectedCells[0].RowIndex];
                     break;
             }
 
-            Course.Delete(course);
+            return course;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (GetSelectedCourse() is Course selectedCourse)
+            {
+                var upForm = new UpdateForm(selectedCourse.Id);
+                Enabled = false;
+                upForm.Closed += (o, args) => Enabled = true;
+                upForm.Show();
+            }
+            else
+                MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

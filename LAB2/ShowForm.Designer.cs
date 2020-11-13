@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.spc_main = new System.Windows.Forms.SplitContainer();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.btn_show = new System.Windows.Forms.Button();
             this.lb_tot = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgw_courses = new System.Windows.Forms.DataGridView();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.spc_main.Panel1.SuspendLayout();
             this.spc_main.Panel2.SuspendLayout();
             this.spc_main.SuspendLayout();
@@ -64,6 +64,26 @@
             this.spc_main.SplitterDistance = 31;
             this.spc_main.SplitterWidth = 5;
             this.spc_main.TabIndex = 0;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(472, 4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 28);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Update";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(553, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 29);
+            this.btn_delete.TabIndex = 2;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_show
             // 
@@ -109,25 +129,6 @@
             this.dgw_courses.RowTemplate.Height = 24;
             this.dgw_courses.Size = new System.Drawing.Size(900, 583);
             this.dgw_courses.TabIndex = 0;
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(553, 4);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 29);
-            this.btn_delete.TabIndex = 2;
-            this.btn_delete.Text = "Delete";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(472, 4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 30);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // ShowForm
             // 
