@@ -41,12 +41,12 @@
             Instructor: <asp:DropDownList runat="server" ID="ddl_ins"/>
         </label>
         Students:
-        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" EnableViewState="False" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True">
+        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" EnableViewState="False" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True" AllowSorting="True" OnSorting="gw_students_OnSorting">
             <SelectedRowStyle BackColor="crimson"></SelectedRowStyle>
             <RowStyle HorizontalAlign="Center"></RowStyle>
             <HeaderStyle BackColor="seashell"></HeaderStyle>
             <Columns>
-                <asp:TemplateField HeaderText="Roll ID & Name">
+                <asp:TemplateField HeaderText="Roll ID & Name" SortExpression="RollId">
                     <ItemTemplate>
                         <p><%#DataBinder.Eval(Container.DataItem,"RollId") + " - " + DataBinder.Eval(Container.DataItem, "Name")%></p>
                     </ItemTemplate>

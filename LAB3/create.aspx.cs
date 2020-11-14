@@ -10,6 +10,8 @@ namespace LAB3
 {
     public partial class Create : System.Web.UI.Page
     {
+        private string _sortDirection;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ddl_ins.DataSource = Instructor.FetchAll();
@@ -24,6 +26,13 @@ namespace LAB3
 
             gw_students.DataSource = Student.FetchAll();
             gw_students.DataBind();
+            if (IsPostBack)
+                _sortDirection = ViewState["SD"].ToString();
+            else
+            {
+                _sortDirection = "ASC";
+                ViewState["SD"] = _sortDirection;
+            }
         }
 
         protected void btn_submit_OnClick(object sender, EventArgs e)
@@ -43,6 +52,31 @@ namespace LAB3
                 if (checkBoxList[i].Checked)
                     stuList.Add(studentList[i]);
             return stuList;
+        }
+
+        protected void gw_students_OnSorting(object sender, GridViewSortEventArgs e)
+        {
+            SetDirection((string) ViewState["SD"]);
+            var data = Student.FetchAll();
+            if (gw_students.DataSource == null) return;
+            switch (_sortDirection)
+            {
+                case "DESC":
+                    data.Sort((student, student1) => -student.Id.CompareTo(student1.Id));
+                    break;
+                case "ASC":
+                    data.Sort((student, student1) => student.Id.CompareTo(student1.Id));
+                    break;
+            }
+
+            ViewState["SD"] = _sortDirection;
+            gw_students.DataSource = data;
+            gw_students.DataBind();
+        }
+
+        private void SetDirection(string dir)
+        {
+            _sortDirection = dir == "ASC" ? "DESC" : "ASC";
         }
     }
 }
