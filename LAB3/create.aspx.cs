@@ -8,7 +8,7 @@ using LAB2.Bean;
 
 namespace LAB3
 {
-    public partial class Create : System.Web.UI.Page
+    public partial class Create : Page
     {
         private string _sortDirection;
 
@@ -43,9 +43,9 @@ namespace LAB3
             Response.Redirect("index.aspx");
         }
 
-        private List<Student> GetStudent()
+        private IEnumerable<Student> GetStudent()
         {
-            List<Student> stuList = new List<Student>(15);
+            var stuList = new List<Student>(15);
             var checkBoxList = gw_students.Columns.OfType<CheckBox>().ToList();
             var studentList = (List<Student>) gw_students.DataSource;
             for (int i = 0; i < checkBoxList.Count; i++)
