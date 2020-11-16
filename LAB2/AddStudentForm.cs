@@ -12,22 +12,23 @@ namespace LAB2
 {
     public partial class AddStudentForm : Form
     {
-       private class StudentWrapper
-       {
-           public Student Student { get; set; }
-           public bool Selected { get; set; }
-           public string Name => Student.Name;
-           public string RollId => Student.RollId;
-       }
+        private class StudentWrapper
+        {
+            public Student Student { get; set; }
+            public bool Selected { get; set; }
+            public string Name => Student.Name;
+            public string RollId => Student.RollId;
+        }
 
-       private readonly List<StudentWrapper> _displayData;
-       private int _courseId;
+        private readonly List<StudentWrapper> _displayData;
+        private int _courseId;
 
-       public AddStudentForm(IEnumerable<Student> curList, int courseId)
+        public AddStudentForm(IEnumerable<Student> curList, int courseId)
         {
             InitializeComponent();
             _courseId = courseId;
-            _displayData = Student.FetchAll().AsQueryable().Except(curList).Select(stu => new StudentWrapper(){Selected = false, Student = stu}).ToList();
+            _displayData = Student.FetchAll().AsQueryable().Except(curList)
+                .Select(stu => new StudentWrapper() {Selected = false, Student = stu}).ToList();
         }
 
         private void AddStudentForm_Load(object sender, EventArgs e)
@@ -69,27 +70,32 @@ namespace LAB2
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            var showList = new List<StudentWrapper>(10);
+            var showList1 = new List<StudentWrapper>(10);
+            var showList2 = new List<StudentWrapper>(10);
             if (!string.IsNullOrEmpty(txb_name.Text.Trim()))
-                showList.AddRange(_displayData.Where(studentWrapper =>
+                showList1.AddRange(_displayData.Where(studentWrapper =>
                     studentWrapper.Name.ToLower().Contains(txb_name.Text.ToLower().Trim())));
             if (!string.IsNullOrEmpty(txb_Id.Text.Trim()))
-                showList.AddRange(_displayData.Where(studentWrapper =>
+                showList2.AddRange(_displayData.Where(studentWrapper =>
                     studentWrapper.RollId.ToLower().Contains(txb_Id.Text.ToLower().Trim())));
-            if (!showList.Any())
-                showList = _displayData;
-            dgw_display.DataSource = showList;
+            if (string.IsNullOrEmpty(txb_name.Text.Trim()) || string.IsNullOrEmpty(txb_Id.Text.Trim()))
+                dgw_display.DataSource = showList1.Any() ? showList1 : showList2;
+            else
+                dgw_display.DataSource = showList1.AsQueryable().Intersect(showList2);
         }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
             var selectedIdsList = dgw_display.Rows.Cast<DataGridViewRow>()
-                .Where(row => Convert.ToBoolean(row.Cells["selected"].Value)).Select(row => row.DataBoundItem).Cast<StudentWrapper>()
+                .Where(row => Convert.ToBoolean(row.Cells["selected"].Value)).Select(row => row.DataBoundItem)
+                .Cast<StudentWrapper>()
                 .Select(stu => stu.Student.Id).ToList();
-            if (!selectedIdsList.Any()) MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (!selectedIdsList.Any())
+                MessageBox.Show(@"Do not select any entry", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
-                Course.RegisterStudentIn(_courseId, _displayData.Where(wrapper => wrapper.Selected).Select(wrapper => wrapper.Student).ToList());
+                Course.RegisterStudentIn(_courseId,
+                    _displayData.Where(wrapper => wrapper.Selected).Select(wrapper => wrapper.Student).ToList());
                 Close();
             }
         }

@@ -51,15 +51,6 @@ namespace LAB3
         protected global::System.Web.UI.WebControls.Button btn_ser;
 
         /// <summary>
-        /// btn_add control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_add;
-
-        /// <summary>
         /// gw_students control.
         /// </summary>
         /// <remarks>

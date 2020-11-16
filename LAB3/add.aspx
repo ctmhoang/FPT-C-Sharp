@@ -35,21 +35,13 @@
         </label>
 
         <asp:Button runat="server" Text="Search" ID="btn_ser" OnClick="btn_ser_OnClick"/>
-        <asp:Button runat="server" Text="Add" ID="btn_add" OnClick="btn_add_OnClick"/>
-        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True" EnableViewState="False">
+        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True" EnableViewState="False" OnRowCommand="gw_students_OnRowCommand">
             <SelectedRowStyle BackColor="crimson"></SelectedRowStyle>
             <RowStyle HorizontalAlign="Center"></RowStyle>
             <HeaderStyle BackColor="seashell"></HeaderStyle>
             <Columns>
-                <asp:BoundField HeaderText="Roll ID" DataField="RollId"/>
+                <asp:ButtonField HeaderText="Roll ID" DataTextField="RollId" CommandName="Add"/>
                 <asp:BoundField HeaderText="Name" DataField="Name"/>
-                <asp:TemplateField  HeaderText="Select">
-                    <ItemTemplate>
-                        <asp:CheckBox runat="server"
-                                      ID="cb_checked"
-                                      Checked="<%# IsSelected((StudentWrapper) Container.DataItem)%>"/>
-                    </ItemTemplate>
-                </asp:TemplateField>                
             </Columns>
         </asp:GridView>
     </div>

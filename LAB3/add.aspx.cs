@@ -10,55 +10,51 @@ namespace LAB3
 {
     public partial class Add : Page
     {
-        private List<StudentWrapper> _displayData;
-
-        public class StudentWrapper
-        {
-            public Student Student { get; set; }
-            public bool Selected { get; set; }
-            public string Name => Student.Name;
-            public string RollId => Student.RollId;
-        }
-
-        public bool IsSelected(StudentWrapper w)
-        {
-            return w.Selected;
-        }
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-            {
-                Rebound();
-                return;
-            }
-            Session["AddStudent"] = Student.FetchAll().AsQueryable()
-                .Except(Student.GetAllStudentIdsBy(
-                    Convert.ToInt32(Request.QueryString["cid"])
-                ).Select(Student.Get).ToList())
-                .Select(stu => new StudentWrapper() { Selected = false, Student = stu }).ToList();
-            _displayData = (List<StudentWrapper>)Session["AddStudent"];
-            Rebound();
+            gw_students.DataSource = GetNotRegisteredStudents();
+            gw_students.DataBind();
         }
 
 
         protected void btn_ser_OnClick(object sender, EventArgs e)
         {
-            _displayData = (List<StudentWrapper>)gw_students.DataSource;
-        }
+            var showList1 = new List<Student>(10);
+            var showList2 = new List<Student>(10);
+            var curList = (List<Student>) gw_students.DataSource;
+            if (!string.IsNullOrEmpty(txb_name.Text.Trim()))
+                showList1.AddRange(curList.Where(studentWrapper =>
+                    studentWrapper.Name.ToLower().Contains(txb_name.Text.ToLower().Trim())));
 
-        protected void btn_add_OnClick(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+            if (!string.IsNullOrEmpty(txb_Id.Text.Trim()))
+                showList2.AddRange(curList.Where(studentWrapper =>
+                    studentWrapper.RollId.ToLower().Contains(txb_Id.Text.ToLower().Trim())));
 
-
-        private void Rebound()
-        {
-            gw_students.DataSource = _displayData;
+            if (string.IsNullOrEmpty(txb_name.Text.Trim()) || string.IsNullOrEmpty(txb_Id.Text.Trim()))
+                gw_students.DataSource = showList1.Any() ? showList1 : showList2;
+            else
+                gw_students.DataSource = showList1.AsQueryable().Intersect(showList2);
             gw_students.DataBind();
         }
 
+
+        protected void gw_students_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Add")
+            {
+                Course.RegisterStudentIn(Convert.ToInt32(Request.QueryString["cid"]),
+                    new List<Student>() {((List<Student>) gw_students.DataSource)[Convert.ToInt32(e.CommandArgument)]});
+                Response.Redirect(Request.RawUrl);
+            }
+        }
+
+        private List<Student> GetNotRegisteredStudents()
+        {
+            return Student.FetchAll().AsQueryable()
+                .Except(Student.GetAllStudentIdsBy(
+                    Convert.ToInt32(Request.QueryString["cid"])
+                ).Select(Student.Get).ToList())
+                .ToList();
+        }
     }
 }
