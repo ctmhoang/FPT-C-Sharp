@@ -64,6 +64,7 @@
     <Content Include="add.aspx" />
     <Content Include="create.aspx" />
     <Content Include="edit.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="view.aspx" />
     <Content Include="Web.config" />
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="edit.aspx.designer.cs">
       <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

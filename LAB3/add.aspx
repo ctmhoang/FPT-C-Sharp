@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="add.aspx.cs" Inherits="LAB3.add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="add.aspx.cs" Inherits="LAB3.Add" %>
 
 <!DOCTYPE html>
 
@@ -16,8 +16,7 @@
             flex-flow: row wrap;
             justify-content: space-between;
             align-items: stretch;
-            margin: 0.3em 0;
-        }
+            margin: 0.3em 0;}
 
         .full-width { width: 100% }
 
@@ -32,12 +31,12 @@
             Name: <asp:TextBox runat="server" ID="txb_name"></asp:TextBox>
         </label>
         <label>
-            Roll ID: <asp:TextBox runat="server" ID="rId"></asp:TextBox>
+            Roll ID: <asp:TextBox runat="server" ID="txb_Id"></asp:TextBox>
         </label>
 
         <asp:Button runat="server" Text="Search" ID="btn_ser" OnClick="btn_ser_OnClick"/>
         <asp:Button runat="server" Text="Add" ID="btn_add" OnClick="btn_add_OnClick"/>
-        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True">
+        <asp:GridView CssClass="full-width" runat="server" ID="gw_students" BorderColor="peru" BorderWidth="1" CellPadding="3" Font-Names="Roboto" Font-Size="1.2em" AutoGenerateColumns="False" EnablePersistedSelection="True" EnableViewState="False">
             <SelectedRowStyle BackColor="crimson"></SelectedRowStyle>
             <RowStyle HorizontalAlign="Center"></RowStyle>
             <HeaderStyle BackColor="seashell"></HeaderStyle>
@@ -47,11 +46,10 @@
                 <asp:TemplateField  HeaderText="Select">
                     <ItemTemplate>
                         <asp:CheckBox runat="server"
-                                      AutoPostBack="true"
-                                      OnCheckedChanged="OnCheckedChanged"
-                                      Checked="False"/>
+                                      ID="cb_checked"
+                                      Checked="<%# IsSelected((StudentWrapper) Container.DataItem)%>"/>
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField>                
             </Columns>
         </asp:GridView>
     </div>

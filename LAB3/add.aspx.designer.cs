@@ -11,7 +11,7 @@ namespace LAB3
 {
 
 
-    public partial class add
+    public partial class Add
     {
 
         /// <summary>
@@ -33,13 +33,13 @@ namespace LAB3
         protected global::System.Web.UI.WebControls.TextBox txb_name;
 
         /// <summary>
-        /// rId control.
+        /// txb_Id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rId;
+        protected global::System.Web.UI.WebControls.TextBox txb_Id;
 
         /// <summary>
         /// btn_ser control.
